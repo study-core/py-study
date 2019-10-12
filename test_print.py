@@ -12,7 +12,8 @@ print(json.dumps(my_mapping, indent=4, sort_keys=True))
 import numpy as np
 import pysnooper
 
-@pysnooper.snoop()
+# @pysnooper.snoop()
+@pysnooper.snoop("pysnooper_debug.log")
 def one(number):
     mat = []
     while number:

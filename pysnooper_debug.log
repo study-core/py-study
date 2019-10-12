@@ -1,0 +1,24 @@
+Source path:... /home/gavin/python-workspace/py-study/test_print.py
+Starting var:.. number = 3
+13:02:38.566552 call        17 def one(number):
+13:02:38.566754 line        18     mat = []
+New var:....... mat = []
+13:02:38.566802 line        19     while number:
+13:02:38.566895 line        20         mat.append(np.random.normal(0, 1))
+Modified var:.. mat = [-1.3406081258021905]
+13:02:38.566966 line        21         number -= 1
+Modified var:.. number = 2
+13:02:38.567034 line        19     while number:
+13:02:38.567098 line        20         mat.append(np.random.normal(0, 1))
+Modified var:.. mat = [-1.3406081258021905, -0.8866319665972079]
+13:02:38.567165 line        21         number -= 1
+Modified var:.. number = 1
+13:02:38.567232 line        19     while number:
+13:02:38.567297 line        20         mat.append(np.random.normal(0, 1))
+Modified var:.. mat = [-1.3406081258021905, -0.8866319665972079, -0.7793009371297366]
+13:02:38.567350 line        21         number -= 1
+Modified var:.. number = 0
+13:02:38.567430 line        19     while number:
+13:02:38.567491 line        22     return mat
+13:02:38.567584 return      22     return mat
+Return value:.. [-1.3406081258021905, -0.8866319665972079, -0.7793009371297366]
