@@ -51,29 +51,94 @@
 #
 
 
-def three(text):
-    def one(func):
-        print("now you are in function one.")
+# def three(text):
+#     def one(func):
+#         print("now you are in function one.")
+#
+#         def warp(*args):
+#             func(*args)
+#
+#         return warp
+#
+#     print("input params is {}".format(text))
+#     return one
+#
+#
+# @three(text=5)
+# def two(x, y):
+#     print("now you are in function two.")
+#     print("x value is %d, y value is %d" % (x, y))
+#
+#
+# two(5, 6)
+# '''
+# input params is 5
+# now you are in function one.
+# now you are in function two.
+# x value is 5, y value is 6
+# '''
 
-        def warp(*args):
-            func(*args)
 
-        return warp
+# # 装饰器 实现单例模式
+# from functools import wraps
+#
+# def singleton (cls):
+#     print('进入第一种实现singleton例子')
+#     instances = {}
+#     @wraps(cls)
+#     def getinstance(*args, **kw):
+#         if cls not in instances:
+#             instances[cls] = cls(*args, **kw)
+#         return instances[cls]
+#
+#     return getinstance
 
-    print("input params is {}".format(text))
-    return one
+
+# # 或者 使用这种方式
+# def singleton(cls):
+#     print('进入第二种实现singleton例子')
+#     _instance = {}
+#
+#     def inner():
+#         if cls not in _instance:
+#             _instance[cls] = cls()
+#         return _instance[cls]
+#     return inner
+
+# @singleton
+# class MyClass(object):
+#     print('初始化了我')
+#     a = 1
+#
+#
+#
+# if __name__ == '__main__':
+#     my1 = MyClass()
+#     my2 = MyClass()
+#     if my1 == my2:
+#         print('ss')
+#     else:
+#         print('nn')
 
 
-@three(text=5)
-def two(x, y):
-    print("now you are in function two.")
-    print("x value is %d, y value is %d" % (x, y))
+
+# 使用 类定义装饰器 (和上面的使用 def 定义的区别)
+# 定义计数器，统计某个对象的某个函数被调用的次数
+class Counter:
+    def __init__(self, func):
+        self.func = func
+        self.count = 0
+
+    def __call__(self, *args, **kwargs):
+        self.count += 1
+        return self.func(*args, **kwargs)
+
+@Counter
+def foo():
+    pass
 
 
-two(5, 6)
-'''
-input params is 5
-now you are in function one.
-now you are in function two.
-x value is 5, y value is 6
-'''
+for i in range(10):
+    foo()
+
+print(foo.count)
